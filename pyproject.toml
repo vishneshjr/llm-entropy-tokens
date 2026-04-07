@@ -1,7 +1,9 @@
 [project]
 name = "llm-entropy-tokens"
 version = "0.1.0"
-description = "Add your description here"
+description = "LLM Entropy Tokens"
 readme = "README.md"
-requires-python = ">=3.13"
-dependencies = []
+requires-python = ">=3.11"
+dependencies = [
+    "datasets>=3.0.0",
+]
