@@ -1,0 +1,863 @@
+[
+  {
+    "token_id": 36958,
+    "text": "fty",
+    "repr": "'fty'",
+    "avg_entropy": 0.0,
+    "count": 83
+  },
+  {
+    "token_id": 116,
+    "text": "�",
+    "repr": "'�'",
+    "avg_entropy": 0.0,
+    "count": 65
+  },
+  {
+    "token_id": 15170,
+    "text": "}{",
+    "repr": "'}{'",
+    "avg_entropy": 0.0,
+    "count": 74
+  },
+  {
+    "token_id": 258,
+    "text": "in",
+    "repr": "'in'",
+    "avg_entropy": 0.0,
+    "count": 83
+  },
+  {
+    "token_id": 230,
+    "text": "�",
+    "repr": "'�'",
+    "avg_entropy": 1e-05,
+    "count": 54
+  },
+  {
+    "token_id": 104,
+    "text": "�",
+    "repr": "'�'",
+    "avg_entropy": 1e-05,
+    "count": 30
+  },
+  {
+    "token_id": 48245,
+    "text": "π",
+    "repr": "'π'",
+    "avg_entropy": 2e-05,
+    "count": 28
+  },
+  {
+    "token_id": 13955,
+    "text": " dy",
+    "repr": "' dy'",
+    "avg_entropy": 6e-05,
+    "count": 20
+  },
+  {
+    "token_id": 47822,
+    "text": "^{",
+    "repr": "'^{'",
+    "avg_entropy": 0.00039,
+    "count": 53
+  },
+  {
+    "token_id": 198,
+    "text": "\n",
+    "repr": "'\\n'",
+    "avg_entropy": 0.00332,
+    "count": 42
+  },
+  {
+    "token_id": 7,
+    "text": "(",
+    "repr": "'('",
+    "avg_entropy": 0.00357,
+    "count": 36
+  },
+  {
+    "token_id": 23,
+    "text": "8",
+    "repr": "'8'",
+    "avg_entropy": 0.00373,
+    "count": 28
+  },
+  {
+    "token_id": 62,
+    "text": "_",
+    "repr": "'_'",
+    "avg_entropy": 0.00485,
+    "count": 31
+  },
+  {
+    "token_id": 89669,
+    "text": "₀",
+    "repr": "'₀'",
+    "avg_entropy": 0.00981,
+    "count": 33
+  },
+  {
+    "token_id": 22,
+    "text": "7",
+    "repr": "'7'",
+    "avg_entropy": 0.01141,
+    "count": 47
+  },
+  {
+    "token_id": 17,
+    "text": "2",
+    "repr": "'2'",
+    "avg_entropy": 0.01214,
+    "count": 299
+  },
+  {
+    "token_id": 18,
+    "text": "3",
+    "repr": "'3'",
+    "avg_entropy": 0.01384,
+    "count": 265
+  },
+  {
+    "token_id": 595,
+    "text": " k",
+    "repr": "' k'",
+    "avg_entropy": 0.0145,
+    "count": 98
+  },
+  {
+    "token_id": 59497,
+    "text": "¹",
+    "repr": "'¹'",
+    "avg_entropy": 0.01495,
+    "count": 33
+  },
+  {
+    "token_id": 92,
+    "text": "}",
+    "repr": "'}'",
+    "avg_entropy": 0.01575,
+    "count": 205
+  },
+  {
+    "token_id": 37018,
+    "text": "frac",
+    "repr": "'frac'",
+    "avg_entropy": 0.01639,
+    "count": 74
+  },
+  {
+    "token_id": 16,
+    "text": "1",
+    "repr": "'1'",
+    "avg_entropy": 0.01674,
+    "count": 522
+  },
+  {
+    "token_id": 74,
+    "text": "k",
+    "repr": "'k'",
+    "avg_entropy": 0.01755,
+    "count": 45
+  },
+  {
+    "token_id": 15159,
+    "text": "_{",
+    "repr": "'_{'",
+    "avg_entropy": 0.01832,
+    "count": 98
+  },
+  {
+    "token_id": 29776,
+    "text": ")^",
+    "repr": "')^'",
+    "avg_entropy": 0.0212,
+    "count": 37
+  },
+  {
+    "token_id": 19,
+    "text": "4",
+    "repr": "'4'",
+    "avg_entropy": 0.02184,
+    "count": 83
+  },
+  {
+    "token_id": 15,
+    "text": "0",
+    "repr": "'0'",
+    "avg_entropy": 0.02319,
+    "count": 251
+  },
+  {
+    "token_id": 21,
+    "text": "6",
+    "repr": "'6'",
+    "avg_entropy": 0.02708,
+    "count": 52
+  },
+  {
+    "token_id": 24884,
+    "text": "^\\",
+    "repr": "'^\\\\'",
+    "avg_entropy": 0.03007,
+    "count": 81
+  },
+  {
+    "token_id": 2804,
+    "text": " q",
+    "repr": "' q'",
+    "avg_entropy": 0.03181,
+    "count": 53
+  },
+  {
+    "token_id": 35321,
+    "text": "-axis",
+    "repr": "'-axis'",
+    "avg_entropy": 0.03424,
+    "count": 28
+  },
+  {
+    "token_id": 77,
+    "text": "n",
+    "repr": "'n'",
+    "avg_entropy": 0.03456,
+    "count": 167
+  },
+  {
+    "token_id": 80,
+    "text": "q",
+    "repr": "'q'",
+    "avg_entropy": 0.03552,
+    "count": 21
+  },
+  {
+    "token_id": 20,
+    "text": "5",
+    "repr": "'5'",
+    "avg_entropy": 0.03582,
+    "count": 43
+  },
+  {
+    "token_id": 14,
+    "text": "/",
+    "repr": "'/'",
+    "avg_entropy": 0.03684,
+    "count": 139
+  },
+  {
+    "token_id": 13822,
+    "text": " dx",
+    "repr": "' dx'",
+    "avg_entropy": 0.04011,
+    "count": 24
+  },
+  {
+    "token_id": 481,
+    "text": " -",
+    "repr": "' -'",
+    "avg_entropy": 0.04169,
+    "count": 212
+  },
+  {
+    "token_id": 90,
+    "text": "{",
+    "repr": "'{'",
+    "avg_entropy": 0.04427,
+    "count": 59
+  },
+  {
+    "token_id": 24,
+    "text": "9",
+    "repr": "'9'",
+    "avg_entropy": 0.04476,
+    "count": 51
+  },
+  {
+    "token_id": 28,
+    "text": "=",
+    "repr": "'='",
+    "avg_entropy": 0.04483,
+    "count": 192
+  },
+  {
+    "token_id": 488,
+    "text": " +",
+    "repr": "' +'",
+    "avg_entropy": 0.04671,
+    "count": 92
+  },
+  {
+    "token_id": 14085,
+    "text": "$$",
+    "repr": "'$$'",
+    "avg_entropy": 0.05206,
+    "count": 56
+  },
+  {
+    "token_id": 73,
+    "text": "j",
+    "repr": "'j'",
+    "avg_entropy": 0.05809,
+    "count": 105
+  },
+  {
+    "token_id": 396,
+    "text": "int",
+    "repr": "'int'",
+    "avg_entropy": 0.05997,
+    "count": 31
+  },
+  {
+    "token_id": 61,
+    "text": "^",
+    "repr": "'^'",
+    "avg_entropy": 0.06175,
+    "count": 149
+  },
+  {
+    "token_id": 21103,
+    "text": " �",
+    "repr": "' �'",
+    "avg_entropy": 0.06311,
+    "count": 54
+  },
+  {
+    "token_id": 29456,
+    "text": "²",
+    "repr": "'²'",
+    "avg_entropy": 0.06441,
+    "count": 26
+  },
+  {
+    "token_id": 59,
+    "text": "\\",
+    "repr": "'\\\\'",
+    "avg_entropy": 0.06457,
+    "count": 28
+  },
+  {
+    "token_id": 1124,
+    "text": " \\",
+    "repr": "' \\\\'",
+    "avg_entropy": 0.06459,
+    "count": 170
+  },
+  {
+    "token_id": 13934,
+    "text": " coordinates",
+    "repr": "' coordinates'",
+    "avg_entropy": 0.06537,
+    "count": 25
+  },
+  {
+    "token_id": 379,
+    "text": " y",
+    "repr": "' y'",
+    "avg_entropy": 0.06736,
+    "count": 76
+  },
+  {
+    "token_id": 220,
+    "text": " ",
+    "repr": "' '",
+    "avg_entropy": 0.07596,
+    "count": 519
+  },
+  {
+    "token_id": 752,
+    "text": " me",
+    "repr": "' me'",
+    "avg_entropy": 0.0786,
+    "count": 76
+  },
+  {
+    "token_id": 6785,
+    "text": " positive",
+    "repr": "' positive'",
+    "avg_entropy": 0.08311,
+    "count": 35
+  },
+  {
+    "token_id": 8,
+    "text": ")",
+    "repr": "')'",
+    "avg_entropy": 0.08984,
+    "count": 63
+  },
+  {
+    "token_id": 9612,
+    "text": "/n",
+    "repr": "'/n'",
+    "avg_entropy": 0.09447,
+    "count": 30
+  },
+  {
+    "token_id": 1242,
+    "text": "sum",
+    "repr": "'sum'",
+    "avg_entropy": 0.09616,
+    "count": 50
+  },
+  {
+    "token_id": 284,
+    "text": " =",
+    "repr": "' ='",
+    "avg_entropy": 0.12,
+    "count": 216
+  },
+  {
+    "token_id": 400,
+    "text": " $",
+    "repr": "' $'",
+    "avg_entropy": 0.12974,
+    "count": 105
+  },
+  {
+    "token_id": 11995,
+    "text": " �",
+    "repr": "' �'",
+    "avg_entropy": 0.13182,
+    "count": 47
+  },
+  {
+    "token_id": 25,
+    "text": ":",
+    "repr": "':'",
+    "avg_entropy": 0.13553,
+    "count": 64
+  },
+  {
+    "token_id": 311,
+    "text": " to",
+    "repr": "' to'",
+    "avg_entropy": 0.13873,
+    "count": 117
+  },
+  {
+    "token_id": 387,
+    "text": " be",
+    "repr": "' be'",
+    "avg_entropy": 0.13989,
+    "count": 37
+  },
+  {
+    "token_id": 271,
+    "text": "\n\n",
+    "repr": "'\\n\\n'",
+    "avg_entropy": 0.14324,
+    "count": 68
+  },
+  {
+    "token_id": 11884,
+    "text": "/(",
+    "repr": "'/('",
+    "avg_entropy": 0.14565,
+    "count": 32
+  },
+  {
+    "token_id": 3,
+    "text": "$",
+    "repr": "'$'",
+    "avg_entropy": 0.14978,
+    "count": 37
+  },
+  {
+    "token_id": 11,
+    "text": ",",
+    "repr": "','",
+    "avg_entropy": 0.17385,
+    "count": 448
+  },
+  {
+    "token_id": 438,
+    "text": " as",
+    "repr": "' as'",
+    "avg_entropy": 0.18293,
+    "count": 27
+  },
+  {
+    "token_id": 502,
+    "text": " j",
+    "repr": "' j'",
+    "avg_entropy": 0.18318,
+    "count": 43
+  },
+  {
+    "token_id": 7851,
+    "text": " �",
+    "repr": "' �'",
+    "avg_entropy": 0.21044,
+    "count": 69
+  },
+  {
+    "token_id": 259,
+    "text": " t",
+    "repr": "' t'",
+    "avg_entropy": 0.21163,
+    "count": 29
+  },
+  {
+    "token_id": 856,
+    "text": " x",
+    "repr": "' x'",
+    "avg_entropy": 0.21938,
+    "count": 67
+  },
+  {
+    "token_id": 51745,
+    "text": " π",
+    "repr": "' π'",
+    "avg_entropy": 0.22195,
+    "count": 49
+  },
+  {
+    "token_id": 2629,
+    "text": " sum",
+    "repr": "' sum'",
+    "avg_entropy": 0.22723,
+    "count": 130
+  },
+  {
+    "token_id": 315,
+    "text": " of",
+    "repr": "' of'",
+    "avg_entropy": 0.22762,
+    "count": 49
+  },
+  {
+    "token_id": 12947,
+    "text": "$.",
+    "repr": "'$.'",
+    "avg_entropy": 0.23006,
+    "count": 22
+  },
+  {
+    "token_id": 435,
+    "text": " r",
+    "repr": "' r'",
+    "avg_entropy": 0.23484,
+    "count": 43
+  },
+  {
+    "token_id": 568,
+    "text": ").",
+    "repr": "').'",
+    "avg_entropy": 0.23877,
+    "count": 26
+  },
+  {
+    "token_id": 320,
+    "text": " (",
+    "repr": "' ('",
+    "avg_entropy": 0.25351,
+    "count": 81
+  },
+  {
+    "token_id": 281,
+    "text": " p",
+    "repr": "' p'",
+    "avg_entropy": 0.25755,
+    "count": 51
+  },
+  {
+    "token_id": 323,
+    "text": " and",
+    "repr": "' and'",
+    "avg_entropy": 0.25801,
+    "count": 95
+  },
+  {
+    "token_id": 374,
+    "text": " is",
+    "repr": "' is'",
+    "avg_entropy": 0.26123,
+    "count": 183
+  },
+  {
+    "token_id": 308,
+    "text": " n",
+    "repr": "' n'",
+    "avg_entropy": 0.26538,
+    "count": 38
+  },
+  {
+    "token_id": 525,
+    "text": " are",
+    "repr": "' are'",
+    "avg_entropy": 0.26899,
+    "count": 22
+  },
+  {
+    "token_id": 3793,
+    "text": " terms",
+    "repr": "' terms'",
+    "avg_entropy": 0.27268,
+    "count": 31
+  },
+  {
+    "token_id": 13,
+    "text": ".",
+    "repr": "'.'",
+    "avg_entropy": 0.27895,
+    "count": 346
+  },
+  {
+    "token_id": 1459,
+    "text": " point",
+    "repr": "' point'",
+    "avg_entropy": 0.29155,
+    "count": 25
+  },
+  {
+    "token_id": 646,
+    "text": " can",
+    "repr": "' can'",
+    "avg_entropy": 0.29853,
+    "count": 34
+  },
+  {
+    "token_id": 504,
+    "text": " from",
+    "repr": "' from'",
+    "avg_entropy": 0.30264,
+    "count": 36
+  },
+  {
+    "token_id": 701,
+    "text": "),",
+    "repr": "'),'",
+    "avg_entropy": 0.30677,
+    "count": 20
+  },
+  {
+    "token_id": 4710,
+    "text": " \n\n",
+    "repr": "' \\n\\n'",
+    "avg_entropy": 0.40929,
+    "count": 46
+  },
+  {
+    "token_id": 594,
+    "text": "'s",
+    "repr": "\"'s\"",
+    "avg_entropy": 0.41337,
+    "count": 35
+  },
+  {
+    "token_id": 4396,
+    "text": " correct",
+    "repr": "' correct'",
+    "avg_entropy": 0.43049,
+    "count": 25
+  },
+  {
+    "token_id": 892,
+    "text": " which",
+    "repr": "' which'",
+    "avg_entropy": 0.43525,
+    "count": 26
+  },
+  {
+    "token_id": 773,
+    "text": " so",
+    "repr": "' so'",
+    "avg_entropy": 0.46783,
+    "count": 36
+  },
+  {
+    "token_id": 264,
+    "text": " a",
+    "repr": "' a'",
+    "avg_entropy": 0.4788,
+    "count": 24
+  },
+  {
+    "token_id": 1990,
+    "text": " double",
+    "repr": "' double'",
+    "avg_entropy": 0.48676,
+    "count": 49
+  },
+  {
+    "token_id": 279,
+    "text": " the",
+    "repr": "' the'",
+    "avg_entropy": 0.49396,
+    "count": 248
+  },
+  {
+    "token_id": 369,
+    "text": " for",
+    "repr": "' for'",
+    "avg_entropy": 0.5247,
+    "count": 36
+  },
+  {
+    "token_id": 92014,
+    "text": "Alternatively",
+    "repr": "'Alternatively'",
+    "avg_entropy": 0.56225,
+    "count": 22
+  },
+  {
+    "token_id": 432,
+    "text": " it",
+    "repr": "' it'",
+    "avg_entropy": 0.5628,
+    "count": 25
+  },
+  {
+    "token_id": 714,
+    "text": " but",
+    "repr": "' but'",
+    "avg_entropy": 0.56363,
+    "count": 23
+  },
+  {
+    "token_id": 30,
+    "text": "?",
+    "repr": "'?'",
+    "avg_entropy": 0.58371,
+    "count": 26
+  },
+  {
+    "token_id": 382,
+    "text": ".\n\n",
+    "repr": "'.\\n\\n'",
+    "avg_entropy": 0.58685,
+    "count": 74
+  },
+  {
+    "token_id": 304,
+    "text": " in",
+    "repr": "' in'",
+    "avg_entropy": 0.61801,
+    "count": 31
+  },
+  {
+    "token_id": 1779,
+    "text": " check",
+    "repr": "' check'",
+    "avg_entropy": 0.63175,
+    "count": 28
+  },
+  {
+    "token_id": 1447,
+    "text": ":\n\n",
+    "repr": "':\\n\\n'",
+    "avg_entropy": 0.64747,
+    "count": 44
+  },
+  {
+    "token_id": 429,
+    "text": " that",
+    "repr": "' that'",
+    "avg_entropy": 0.69116,
+    "count": 78
+  },
+  {
+    "token_id": 358,
+    "text": " I",
+    "repr": "' I'",
+    "avg_entropy": 0.69627,
+    "count": 69
+  },
+  {
+    "token_id": 1221,
+    "text": " then",
+    "repr": "' then'",
+    "avg_entropy": 0.72282,
+    "count": 21
+  },
+  {
+    "token_id": 2055,
+    "text": " So",
+    "repr": "' So'",
+    "avg_entropy": 0.73071,
+    "count": 42
+  },
+  {
+    "token_id": 15277,
+    "text": " Therefore",
+    "repr": "' Therefore'",
+    "avg_entropy": 0.74956,
+    "count": 28
+  },
+  {
+    "token_id": 3983,
+    "text": "But",
+    "repr": "'But'",
+    "avg_entropy": 0.76146,
+    "count": 23
+  },
+  {
+    "token_id": 448,
+    "text": " with",
+    "repr": "' with'",
+    "avg_entropy": 0.76612,
+    "count": 22
+  },
+  {
+    "token_id": 6771,
+    "text": " Let",
+    "repr": "' Let'",
+    "avg_entropy": 0.7746,
+    "count": 44
+  },
+  {
+    "token_id": 2474,
+    "text": " since",
+    "repr": "' since'",
+    "avg_entropy": 0.79076,
+    "count": 23
+  },
+  {
+    "token_id": 1988,
+    "text": " But",
+    "repr": "' But'",
+    "avg_entropy": 0.85724,
+    "count": 28
+  },
+  {
+    "token_id": 419,
+    "text": " this",
+    "repr": "' this'",
+    "avg_entropy": 0.85732,
+    "count": 31
+  },
+  {
+    "token_id": 1744,
+    "text": " think",
+    "repr": "' think'",
+    "avg_entropy": 0.89514,
+    "count": 29
+  },
+  {
+    "token_id": 582,
+    "text": " we",
+    "repr": "' we'",
+    "avg_entropy": 0.90709,
+    "count": 33
+  },
+  {
+    "token_id": 1077,
+    "text": " let",
+    "repr": "' let'",
+    "avg_entropy": 0.95599,
+    "count": 27
+  },
+  {
+    "token_id": 421,
+    "text": " if",
+    "repr": "' if'",
+    "avg_entropy": 0.97071,
+    "count": 23
+  },
+  {
+    "token_id": 7196,
+    "text": " maybe",
+    "repr": "' maybe'",
+    "avg_entropy": 1.1313,
+    "count": 27
+  }
+]

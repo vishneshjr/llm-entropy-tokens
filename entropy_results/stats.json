@@ -1,0 +1,9 @@
+{
+  "total_tokens": 11837,
+  "mean_entropy": 0.22869132459163666,
+  "median_entropy": 0.00017106634913943708,
+  "p80_entropy": 0.5128585696220398,
+  "pct_below_0.01": 59.91,
+  "n_frequent_tokens": 123,
+  "min_freq": 20
+}
