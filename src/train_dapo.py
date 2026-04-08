@@ -1,22 +1,18 @@
 """
-Train Qwen3 on MATH-500 with DAPO + entropy-masked policy gradient.
+Train rnj-1-instruct on MATH-500 with DAPO + entropy-masked policy gradient.
 
 Reproduces the central experiment of Wang et al. 2025 ("Beyond the 80/20
 Rule: High-Entropy Minority Tokens Drive Effective RL for LLM Reasoning"),
 on top of DAPO (Yu et al. 2025).
 
 Three runs to compare (set --mask_mode):
-python -m src.train_dapo --model Qwen/Qwen3-1.7B --mask_mode full   --output_dir outputs/full
-python -m src.train_dapo --model Qwen/Qwen3-1.7B --mask_mode topk   --output_dir outputs/topk
-python -m src.train_dapo --model Qwen/Qwen3-1.7B --mask_mode bottom --output_dir outputs/bottom
+    A) full    — vanilla DAPO, all completion tokens contribute
+    B) topk    — global top 20%% highest-entropy tokens (paper's main result)
+    C) bottom  — global bottom 80%% (ablation; should underperform A)
 
-
-Example:
-    python -m src.train_dapo \\
-        --model Qwen/Qwen3-1.7B \\
-        --mask_mode topk \\
-        --output_dir outputs/run_topk \\
-        --max_steps 200
+    python -m src.train_dapo --mask_mode full   --output_dir outputs/full
+    python -m src.train_dapo --mask_mode topk   --output_dir outputs/topk
+    python -m src.train_dapo --mask_mode bottom --output_dir outputs/bottom
 """
 
 from __future__ import annotations
