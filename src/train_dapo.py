@@ -20,7 +20,6 @@ Example:
 """
 
 from __future__ import annotations
-
 import argparse
 import os
 
@@ -34,15 +33,35 @@ from src.dapo_trainer import DAPOConfig, DAPOTrainer
 from src.reward import make_reward_fn
 
 
-def to_hf_dataset(records):
-    return Dataset.from_list([
-        {"prompt": r["prompt"], "gold": r["gold"]} for r in records
-    ])
+SYSTEM_PROMPT = (
+    "You are a careful math tutor. Solve the problem with clear step-by-step "
+    "reasoning in plain text (do NOT write code). Put your final answer inside "
+    "\\boxed{}."
+)
+
+
+def to_hf_dataset(records, tokenizer):
+    """
+    Apply the chat template up front so the model sees a system+user
+    conversation. This is important for rnj-1-instruct, which has a
+    strong code-output bias without an explicit non-code system prompt.
+    """
+    rows = []
+    for r in records:
+        messages = [
+            {"role": "system", "content": SYSTEM_PROMPT},
+            {"role": "user", "content": r["prompt"]},
+        ]
+        text = tokenizer.apply_chat_template(
+            messages, tokenize=False, add_generation_prompt=True
+        )
+        rows.append({"prompt": text, "gold": r["gold"]})
+    return Dataset.from_list(rows)
 
 
 def parse_args():
     p = argparse.ArgumentParser()
-    p.add_argument("--model", default="Qwen/Qwen3-1.7B")
+    p.add_argument("--model", default="EssentialAI/rnj-1-instruct")
     p.add_argument("--output_dir", required=True)
     p.add_argument("--mask_mode", choices=["full", "topk", "bottom", "threshold"],
                    default="topk",
@@ -107,16 +126,16 @@ def main():
     args = parse_args()
     os.makedirs(args.output_dir, exist_ok=True)
 
-    # ── Data ───────────────────────────────────────────────────────────
-    train_records, eval_records = load_math500_split(n_test=100, seed=args.seed)
-    train_ds = to_hf_dataset(train_records)
-    eval_ds = to_hf_dataset(eval_records)
-    print(f"Train: {len(train_ds)}  Eval: {len(eval_ds)}")
-
-    # ── Tokenizer ──────────────────────────────────────────────────────
+    # ── Tokenizer (needed to apply chat template) ──────────────────────
     tokenizer = AutoTokenizer.from_pretrained(args.model, trust_remote_code=True)
     if tokenizer.pad_token is None:
         tokenizer.pad_token = tokenizer.eos_token
+
+    # ── Data ───────────────────────────────────────────────────────────
+    train_records, eval_records = load_math500_split(n_test=100, seed=args.seed)
+    train_ds = to_hf_dataset(train_records, tokenizer)
+    eval_ds = to_hf_dataset(eval_records, tokenizer)
+    print(f"Train: {len(train_ds)}  Eval: {len(eval_ds)}")
 
     # ── LoRA ───────────────────────────────────────────────────────────
     peft_config = LoraConfig(
