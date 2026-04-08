@@ -63,26 +63,29 @@ def parse_args():
     p = argparse.ArgumentParser()
     p.add_argument("--model", default="EssentialAI/rnj-1-instruct")
     p.add_argument("--output_dir", required=True)
-    p.add_argument("--mask_mode", choices=["full", "topk", "bottom", "threshold"],
+    p.add_argument("--mask_mode", choices=["full", "topk", "bottom"],
                    default="topk",
-                   help="full=baseline DAPO, topk=top-20%% entropy (paper), "
-                        "bottom=bottom-80%% (ablation), threshold=fixed H>=p80")
-    p.add_argument("--topk_frac", type=float, default=0.20)
-    p.add_argument("--entropy_threshold", type=float, default=0.5128,
-                   help="from entropy_results/stats.json")
+                   help="full = baseline DAPO (all tokens), "
+                        "topk = global top-20%% entropy (paper main result), "
+                        "bottom = global bottom-80%% entropy (ablation)")
+    p.add_argument("--entropy_top_ratio", type=float, default=0.20)
 
-    # DAPO hparams
+    # DAPO hparams (paper defaults)
     p.add_argument("--eps_low", type=float, default=0.20)
     p.add_argument("--eps_high", type=float, default=0.28)
+    p.add_argument("--clip_ratio_c", type=float, default=10.0)
 
-    # Training hparams
+    # Training hparams (paper: lr=1e-6, warmup=10, wd=0.1, grad_clip=1.0)
     p.add_argument("--lr", type=float, default=1e-6)
+    p.add_argument("--warmup_steps", type=int, default=10)
+    p.add_argument("--weight_decay", type=float, default=0.1)
+    p.add_argument("--max_grad_norm", type=float, default=1.0)
     p.add_argument("--max_steps", type=int, default=200)
     p.add_argument("--per_device_batch", type=int, default=1)
     p.add_argument("--grad_accum", type=int, default=8)
-    p.add_argument("--num_generations", type=int, default=8,
-                   help="G in GRPO/DAPO: rollouts per prompt")
-    p.add_argument("--max_prompt_len", type=int, default=1024)
+    p.add_argument("--num_generations", type=int, default=16,
+                   help="G in GRPO/DAPO: rollouts per prompt (paper uses 16)")
+    p.add_argument("--max_prompt_len", type=int, default=2048)
     p.add_argument("--max_completion_len", type=int, default=2048)
 
     # LoRA
@@ -94,31 +97,18 @@ def parse_args():
 
 
 def build_dapo_config(args) -> DAPOConfig:
+    shared = dict(
+        eps_low=args.eps_low,
+        eps_high=args.eps_high,
+        clip_ratio_c=args.clip_ratio_c,
+        entropy_top_ratio=args.entropy_top_ratio,
+    )
     if args.mask_mode == "full":
-        return DAPOConfig(
-            eps_low=args.eps_low, eps_high=args.eps_high,
-            use_entropy_mask=False, entropy_mask_mode="off",
-        )
+        return DAPOConfig(use_entropy_mask=False, entropy_mask_mode="off", **shared)
     if args.mask_mode == "topk":
-        return DAPOConfig(
-            eps_low=args.eps_low, eps_high=args.eps_high,
-            use_entropy_mask=True, entropy_mask_mode="topk",
-            entropy_topk_frac=args.topk_frac,
-        )
+        return DAPOConfig(use_entropy_mask=True, entropy_mask_mode="topk", **shared)
     if args.mask_mode == "bottom":
-        # Implemented as topk on the NEGATED entropy: cleanest way is
-        # to use topk with frac = 1 - topk_frac and flag this as ablation.
-        return DAPOConfig(
-            eps_low=args.eps_low, eps_high=args.eps_high,
-            use_entropy_mask=True, entropy_mask_mode="topk",
-            entropy_topk_frac=1.0 - args.topk_frac,  # the bottom 80%
-        )
-    if args.mask_mode == "threshold":
-        return DAPOConfig(
-            eps_low=args.eps_low, eps_high=args.eps_high,
-            use_entropy_mask=True, entropy_mask_mode="threshold",
-            entropy_threshold=args.entropy_threshold,
-        )
+        return DAPOConfig(use_entropy_mask=True, entropy_mask_mode="bottom", **shared)
     raise ValueError(args.mask_mode)
 
 
@@ -155,6 +145,9 @@ def main():
     grpo_config = GRPOConfig(
         output_dir=args.output_dir,
         learning_rate=args.lr,
+        warmup_steps=args.warmup_steps,
+        weight_decay=args.weight_decay,
+        max_grad_norm=args.max_grad_norm,
         max_steps=args.max_steps,
         per_device_train_batch_size=args.per_device_batch,
         gradient_accumulation_steps=args.grad_accum,
@@ -162,7 +155,7 @@ def main():
         max_prompt_length=args.max_prompt_len,
         max_completion_length=args.max_completion_len,
         beta=0.0,                       # DAPO drops the KL term
-        loss_type="grpo",               # we override compute_loss anyway
+        loss_type="dapo",               # trl label; we override compute_loss anyway
         temperature=1.0,
         top_p=1.0,
         top_k=0,
