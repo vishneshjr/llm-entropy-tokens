@@ -1,0 +1,14 @@
+## Multi-GPU training via PyTorch DDP.
+## Works with 2, 4, or 8 GPUs — set num_processes to your GPU count.
+##
+## Usage:
+##   accelerate launch --config_file configs/accelerate_multigpu.yaml \
+##       -m src.train_dapo --mask_mode topk --output_dir outputs/topk
+
+compute_environment: LOCAL_MACHINE
+distributed_type: MULTI_GPU
+mixed_precision: bf16
+num_machines: 1
+num_processes: 2              # ← change to match your GPU count (2 or 4)
+use_cpu: false
+main_training_function: main

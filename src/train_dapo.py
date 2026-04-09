@@ -10,9 +10,21 @@ Three runs to compare (set --mask_mode):
     B) topk    — global top 20%% highest-entropy tokens (paper's main result)
     C) bottom  — global bottom 80%% (ablation; should underperform A)
 
-    python -m src.train_dapo --mask_mode full   --output_dir outputs/full
-    python -m src.train_dapo --mask_mode topk   --output_dir outputs/topk
-    python -m src.train_dapo --mask_mode bottom --output_dir outputs/bottom
+Single-GPU:
+    python -m src.train_dapo --mask_mode topk --output_dir outputs/topk
+
+Multi-GPU (2 or 4 GPUs):
+    accelerate launch --config_file configs/accelerate_multigpu.yaml \
+        -m src.train_dapo --mask_mode topk --output_dir outputs/topk
+
+Multi-GPU with DeepSpeed ZeRO-2 (saves more VRAM):
+    accelerate launch --config_file configs/accelerate_deepspeed.yaml \
+        -m src.train_dapo --mask_mode topk --output_dir outputs/topk
+
+Resume from checkpoint (after a previous run was interrupted):
+    accelerate launch --config_file configs/accelerate_multigpu.yaml \
+        -m src.train_dapo --mask_mode topk --output_dir outputs/topk \
+        --resume_from_checkpoint latest
 """
 
 from __future__ import annotations
@@ -88,6 +100,15 @@ def parse_args():
     p.add_argument("--lora_r", type=int, default=32)
     p.add_argument("--lora_alpha", type=int, default=64)
 
+    # Checkpointing / resume
+    p.add_argument("--save_steps", type=int, default=25,
+                   help="Save a checkpoint every N steps")
+    p.add_argument("--save_total_limit", type=int, default=3,
+                   help="Keep only the last N checkpoints to save disk space")
+    p.add_argument("--resume_from_checkpoint", type=str, default=None,
+                   help="Path to checkpoint dir, or 'latest' to auto-detect "
+                        "the most recent checkpoint in output_dir")
+
     p.add_argument("--seed", type=int, default=42)
     return p.parse_args()
 
@@ -158,10 +179,16 @@ def main():
         bf16=True,
         gradient_checkpointing=True,
         logging_steps=1,
-        save_steps=50,
+        save_steps=args.save_steps,
+        save_total_limit=args.save_total_limit,
+        save_only_model=False,            # save optimizer/scheduler for resume
         seed=args.seed,
         report_to=["wandb"],
         run_name=f"dapo-{args.mask_mode}",
+        # Multi-GPU settings (no-ops on single GPU)
+        ddp_find_unused_parameters=False,
+        dataloader_num_workers=2,
+        dataloader_pin_memory=True,
     )
 
     dapo_config = build_dapo_config(args)
@@ -177,7 +204,25 @@ def main():
         dapo_config=dapo_config,
     )
 
-    trainer.train()
+    # ── Resume logic ─────────────────────────────────────────────────
+    resume_ckpt = args.resume_from_checkpoint
+    if resume_ckpt == "latest":
+        # Auto-detect the most recent checkpoint-* dir in output_dir
+        import glob
+        ckpts = sorted(
+            glob.glob(os.path.join(args.output_dir, "checkpoint-*")),
+            key=lambda p: int(p.rsplit("-", 1)[-1]),
+        )
+        if ckpts:
+            resume_ckpt = ckpts[-1]
+            print(f"Resuming from latest checkpoint: {resume_ckpt}")
+        else:
+            resume_ckpt = None
+            print("No checkpoints found in output_dir — starting from scratch.")
+    elif resume_ckpt is not None:
+        print(f"Resuming from checkpoint: {resume_ckpt}")
+
+    trainer.train(resume_from_checkpoint=resume_ckpt)
     trainer.save_model(args.output_dir)
     print(f"Saved to {args.output_dir}")
 

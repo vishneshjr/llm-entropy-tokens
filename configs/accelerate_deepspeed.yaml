@@ -1,0 +1,23 @@
+## Multi-GPU training with DeepSpeed ZeRO Stage 2.
+## Shards optimizer state + gradients across GPUs → ~2x less VRAM per GPU
+## compared to plain DDP. Good for squeezing larger batches or longer sequences.
+##
+## Usage:
+##   accelerate launch --config_file configs/accelerate_deepspeed.yaml \
+##       -m src.train_dapo --mask_mode topk --output_dir outputs/topk
+
+compute_environment: LOCAL_MACHINE
+distributed_type: DEEPSPEED
+mixed_precision: bf16
+num_machines: 1
+num_processes: 2              # ← change to match your GPU count (2 or 4)
+use_cpu: false
+main_training_function: main
+
+deepspeed_config:
+  zero_stage: 2
+  offload_optimizer_device: none      # set to "cpu" if you're tight on VRAM
+  offload_param_device: none
+  gradient_accumulation_steps: 8      # must match --grad_accum
+  gradient_clipping: 1.0
+  zero3_init_flag: false
